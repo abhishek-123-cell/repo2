@@ -1,6 +1,23 @@
 const express = require("express");
-const port = 8000;
+// const cookieParser = require("cookie-parser");
 const app = express();
-app.listen(port, () => {
-  console.log("My system is running on the port=", port);
+const port = 8000;
+app.use("/", require("./routes"));
+app.post(
+  "/",
+  (req, res) => {
+    res.status(200).json({
+      message: "hello world",
+    });
+  }
+
+
+  
+);
+app.listen(port, function (err) {
+  if (err) {
+    console.log(`Error in running the server: ${err}`);
+  }
+
+  console.log(`Server is running on port: ${port}`);
 });
